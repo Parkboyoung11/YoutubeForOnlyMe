@@ -9,19 +9,30 @@
 import UIKit
 
 class Setting : NSObject{
-    var name : String
+    var name : SettingName
     var iconName : String
     
-    init(name : String, iconName : String) {
+    init(name : SettingName, iconName : String) {
         self.name = name
         self.iconName = iconName
     }
 }
 
+enum SettingName : String {
+    case Settings = "Settings"
+    case Terms = "Terms & privacy policy"
+    case Feedback = "Send Feedback"
+    case Help = "Help"
+    case SwitchAccount = "Switch Account"
+    case Cancel = "Cancel"
+}
+
 class SettingLancher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     let settings : [Setting] = {
-        return [Setting(name: "Settings", iconName: "settings"), Setting(name: "Terms & privacy policy", iconName: "privacy"), Setting(name: "Send Feedback", iconName: "feedback"), Setting(name: "Help", iconName: "help"), Setting(name: "Switch Account", iconName: "switch_account"), Setting(name: "Cancel", iconName: "cancel")]
+        return [Setting(name: .Settings, iconName: "settings"), Setting(name: .Terms, iconName: "privacy"), Setting(name: .Feedback, iconName: "feedback"), Setting(name: .Help, iconName: "help"), Setting(name: .SwitchAccount, iconName: "switch_account"), Setting(name: .Cancel, iconName: "cancel")]
     }()
+    
+
     
     let cellID = "cellid"
     let cellHeight : CGFloat = 50
@@ -68,7 +79,7 @@ class SettingLancher: NSObject, UICollectionViewDataSource, UICollectionViewDele
                 self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
             }
         }) { (completed : Bool) in
-            if setting.name !=  "" && setting.name != "Cancel" {
+            if setting.name != .Cancel {
                 self.homeController?.showControllerForSetting(setting: setting)
             }
         }

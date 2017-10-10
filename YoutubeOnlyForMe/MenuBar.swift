@@ -11,6 +11,7 @@ import UIKit
 class MenuBar : UIView, UICollectionViewDataSource , UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let imageNames = ["home", "trending", "subscriptions", "account"]
+    var horizontalLeftBarContraint : NSLayoutConstraint?
     
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -33,6 +34,23 @@ class MenuBar : UIView, UICollectionViewDataSource , UICollectionViewDelegate, U
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .top)
         
+        setupHorizontalBar()
+        
+    }
+    
+    func setupHorizontalBar() {
+        let horizontalView = UIView()
+        horizontalView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        horizontalView.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(horizontalView)
+        
+        horizontalLeftBarContraint = horizontalView.leftAnchor.constraint(equalTo: self.leftAnchor)
+        
+        horizontalLeftBarContraint?.isActive = true
+        horizontalView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        horizontalView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/4).isActive = true
+        horizontalView.heightAnchor.constraint(equalToConstant: 4).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,6 +74,14 @@ class MenuBar : UIView, UICollectionViewDataSource , UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let x = CGFloat(indexPath.item) * frame.width / 4
+        horizontalLeftBarContraint?.constant = x
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
+            self.layoutIfNeeded()
+        }, completion: nil)
     }
     
 }

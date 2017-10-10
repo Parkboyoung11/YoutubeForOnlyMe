@@ -29,7 +29,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         navigationController?.navigationBar.isTranslucent = false
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLabel.text = "Home"
+        titleLabel.text = "   Home"
         titleLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
@@ -91,7 +91,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func showControllerForSetting(setting: Setting) {
         let dummySettingsViewController = UIViewController()
         dummySettingsViewController.view.backgroundColor = UIColor.white
-        dummySettingsViewController.navigationItem.title = setting.name
+        dummySettingsViewController.navigationItem.title = setting.name.rawValue
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.pushViewController(dummySettingsViewController, animated: true)
@@ -102,9 +102,20 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     private func setupMenuBar() {
+        
+        navigationController?.hidesBarsOnSwipe = true
+        
+        let redView = UIView()
+        redView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
+        view.addSubview(redView)
+        view.addContraintsWithFormat(format: "H:|[v0]|", views: redView)
+        view.addContraintsWithFormat(format: "V:[v0(50)]", views: redView)
+        
         view.addSubview(menuBar)
         view.addContraintsWithFormat(format: "H:|[v0]|", views: menuBar)
-        view.addContraintsWithFormat(format: "V:|[v0(50)]", views: menuBar)
+        view.addContraintsWithFormat(format: "V:[v0(50)]", views: menuBar)
+        
+        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

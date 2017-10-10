@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33CBFA861F8366F700A44760 /* ManuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CBFA851F8366F700A44760 /* ManuBar.swift */; };
+		33CBFA861F8366F700A44760 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CBFA851F8366F700A44760 /* MenuBar.swift */; };
 		33CBFA891F837E2400A44760 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CBFA881F837E2400A44760 /* Video.swift */; };
 		33E698BC1F8C7C3900D3542B /* SettingLancher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E698BB1F8C7C3900D3542B /* SettingLancher.swift */; };
 		33E698BE1F8C838400D3542B /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E698BD1F8C838400D3542B /* SettingCell.swift */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		33CBFA851F8366F700A44760 /* ManuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuBar.swift; sourceTree = "<group>"; };
+		33CBFA851F8366F700A44760 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		33CBFA881F837E2400A44760 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		33E698BB1F8C7C3900D3542B /* SettingLancher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingLancher.swift; sourceTree = "<group>"; };
 		33E698BD1F8C838400D3542B /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				33EE2D0C1F834F0C0094DE5E /* VideoCell.swift */,
-				33CBFA851F8366F700A44760 /* ManuBar.swift */,
+				33CBFA851F8366F700A44760 /* MenuBar.swift */,
 				33E698BD1F8C838400D3542B /* SettingCell.swift */,
 			);
 			name = View;
@@ -192,7 +192,7 @@
 				33CBFA891F837E2400A44760 /* Video.swift in Sources */,
 				33EE2D0D1F834F0C0094DE5E /* VideoCell.swift in Sources */,
 				33EE2CF71F832CD70094DE5E /* HomeController.swift in Sources */,
-				33CBFA861F8366F700A44760 /* ManuBar.swift in Sources */,
+				33CBFA861F8366F700A44760 /* MenuBar.swift in Sources */,
 				33E698BC1F8C7C3900D3542B /* SettingLancher.swift in Sources */,
 				33EE2CF51F832CD70094DE5E /* AppDelegate.swift in Sources */,
 			);
