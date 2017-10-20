@@ -9,8 +9,8 @@
 import UIKit
 
 class Setting : NSObject{
-    var name : SettingName
-    var iconName : String
+    let name : SettingName
+    let iconName : String
     
     init(name : SettingName, iconName : String) {
         self.name = name
@@ -19,17 +19,21 @@ class Setting : NSObject{
 }
 
 enum SettingName : String {
+    case Cancel = "Cancel"
     case Settings = "Settings"
     case Terms = "Terms & privacy policy"
     case Feedback = "Send Feedback"
     case Help = "Help"
     case SwitchAccount = "Switch Account"
-    case Cancel = "Cancel"
 }
 
 class SettingLancher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     let settings : [Setting] = {
-        return [Setting(name: .Settings, iconName: "settings"), Setting(name: .Terms, iconName: "privacy"), Setting(name: .Feedback, iconName: "feedback"), Setting(name: .Help, iconName: "help"), Setting(name: .SwitchAccount, iconName: "switch_account"), Setting(name: .Cancel, iconName: "cancel")]
+        let settingsSetting = Setting(name: .Settings, iconName: "settings")
+        let cancelSetting = Setting(name: .Cancel, iconName: "cancel")
+        
+        return [settingsSetting, Setting(name: .Terms, iconName: "privacy"), Setting(name: .Feedback, iconName: "feedback"), Setting(name: .Help, iconName: "help"), Setting(name: .SwitchAccount, iconName: "switch_account"), cancelSetting]
     }()
     
 
@@ -38,11 +42,7 @@ class SettingLancher: NSObject, UICollectionViewDataSource, UICollectionViewDele
     let cellHeight : CGFloat = 50
     var homeController : HomeController?
     
-    let blackView : UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        return view
-    }()
+    let blackView = UIView()
     
     let collectionView : UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -53,17 +53,17 @@ class SettingLancher: NSObject, UICollectionViewDataSource, UICollectionViewDele
     
     func showSetting() {
         if let window = UIApplication.shared.keyWindow {
+            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hanldeDismiss)))
-            blackView.alpha = 0
+            
             window.addSubview(blackView)
             window.addSubview(collectionView)
-            
-            blackView.frame = window.frame
-            
             let heigh : CGFloat = CGFloat(settings.count) * cellHeight
             let y = window.frame.height - heigh
-            
             collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: heigh)
+            
+            blackView.frame = window.frame
+            blackView.alpha = 0
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
                 self.blackView.alpha = 1
@@ -72,15 +72,17 @@ class SettingLancher: NSObject, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
-    func hanldeDismiss(setting : Setting) {
+    func hanldeDismiss(_ setting : Setting) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.alpha = 0
             if let window = UIApplication.shared.keyWindow {
                 self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
             }
         }) { (completed : Bool) in
+            print(setting.name)
             if setting.name != .Cancel {
-                self.homeController?.showControllerForSetting(setting: setting)
+                print(setting.name)
+                self.homeController?.showControllerForSetting(setting)
             }
         }
     }
@@ -106,15 +108,15 @@ class SettingLancher: NSObject, UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let setting = settings[indexPath.item]
-        hanldeDismiss(setting : setting)
+        hanldeDismiss(setting)
         
         
     }
     
     override init() {
         super.init()
-        collectionView.register(SettingCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.register(SettingCell.self, forCellWithReuseIdentifier: cellID)
     }
 }

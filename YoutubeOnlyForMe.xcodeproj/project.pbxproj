@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3328FF881F90C526003E968A /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3328FF871F90C526003E968A /* FeedCell.swift */; };
+		3328FF8A1F90C540003E968A /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3328FF891F90C540003E968A /* TrendingCell.swift */; };
+		3328FF8C1F90C54F003E968A /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3328FF8B1F90C54F003E968A /* SubscriptionCell.swift */; };
+		3370BC4A1F95DD36008649BD /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3370BC491F95DD36008649BD /* ApiService.swift */; };
 		33CBFA861F8366F700A44760 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CBFA851F8366F700A44760 /* MenuBar.swift */; };
 		33CBFA891F837E2400A44760 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CBFA881F837E2400A44760 /* Video.swift */; };
 		33E698BC1F8C7C3900D3542B /* SettingLancher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E698BB1F8C7C3900D3542B /* SettingLancher.swift */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3328FF871F90C526003E968A /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		3328FF891F90C540003E968A /* TrendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
+		3328FF8B1F90C54F003E968A /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
+		3370BC491F95DD36008649BD /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		33CBFA851F8366F700A44760 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		33CBFA881F837E2400A44760 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		33E698BB1F8C7C3900D3542B /* SettingLancher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingLancher.swift; sourceTree = "<group>"; };
@@ -74,6 +82,7 @@
 		33EE2CF31F832CD70094DE5E /* YoutubeOnlyForMe */ = {
 			isa = PBXGroup;
 			children = (
+				33FF4AC51F99E42200CD003E /* ApiService */,
 				33CBFA871F837E1800A44760 /* Model */,
 				33EE2D091F834EC10094DE5E /* View */,
 				33EE2D0E1F834F400094DE5E /* Controller */,
@@ -101,6 +110,9 @@
 				33EE2D0C1F834F0C0094DE5E /* VideoCell.swift */,
 				33CBFA851F8366F700A44760 /* MenuBar.swift */,
 				33E698BD1F8C838400D3542B /* SettingCell.swift */,
+				3328FF871F90C526003E968A /* FeedCell.swift */,
+				3328FF891F90C540003E968A /* TrendingCell.swift */,
+				3328FF8B1F90C54F003E968A /* SubscriptionCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -112,6 +124,14 @@
 				33E698BB1F8C7C3900D3542B /* SettingLancher.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		33FF4AC51F99E42200CD003E /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				3370BC491F95DD36008649BD /* ApiService.swift */,
+			);
+			name = ApiService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,12 +209,16 @@
 			files = (
 				33EE2D081F834E800094DE5E /* Extension.swift in Sources */,
 				33E698BE1F8C838400D3542B /* SettingCell.swift in Sources */,
+				3370BC4A1F95DD36008649BD /* ApiService.swift in Sources */,
+				3328FF8A1F90C540003E968A /* TrendingCell.swift in Sources */,
 				33CBFA891F837E2400A44760 /* Video.swift in Sources */,
 				33EE2D0D1F834F0C0094DE5E /* VideoCell.swift in Sources */,
 				33EE2CF71F832CD70094DE5E /* HomeController.swift in Sources */,
 				33CBFA861F8366F700A44760 /* MenuBar.swift in Sources */,
 				33E698BC1F8C7C3900D3542B /* SettingLancher.swift in Sources */,
 				33EE2CF51F832CD70094DE5E /* AppDelegate.swift in Sources */,
+				3328FF881F90C526003E968A /* FeedCell.swift in Sources */,
+				3328FF8C1F90C54F003E968A /* SubscriptionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

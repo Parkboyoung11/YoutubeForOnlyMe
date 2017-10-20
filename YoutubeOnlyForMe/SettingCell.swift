@@ -20,17 +20,8 @@ class SettingCell: BaseCell {
     var nameLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.numberOfLines = 1
         return label
     }()
-    
-    var setting : Setting? {
-        didSet {
-            nameLabel.text = setting?.name.rawValue
-            iconImageView.image = UIImage(named: (setting?.iconName)!)?.withRenderingMode(.alwaysTemplate)
-            iconImageView.tintColor = UIColor.darkGray
-        }
-    }
     
     var iconImageView : UIImageView = {
         let imageView = UIImageView()
@@ -38,6 +29,15 @@ class SettingCell: BaseCell {
         return imageView
     }()
     
+    var setting : Setting? {
+        didSet {
+            nameLabel.text = setting?.name.rawValue
+            if let iconName = setting?.iconName {
+                iconImageView.image = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
+                iconImageView.tintColor = UIColor.darkGray
+            }
+        }
+    }
     
     override func setupViews() {
         super.setupViews()

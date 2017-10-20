@@ -38,8 +38,7 @@ class VideoCell : BaseCell {
                 numberFormatter.numberStyle = .decimal
                 
                 let subtitleText = "\(channelName)・\(numberFormatter.string(from: numberOfViews)!)・2 years ago"
-                subtitleTextView.text = subtitleText
-//                print(subtitleText)
+                self.subtitleTextView.text = subtitleText
             }
             
             if let title = video?.title {
@@ -89,7 +88,8 @@ class VideoCell : BaseCell {
     let subtitleTextView : UITextView = {
         let textView = UITextView()
         textView.textColor = UIColor.lightGray
-        textView.isEditable = false
+//        textView.isEditable = false
+//        textView.text = "TaylorSwiftVEVO • 1,604,684,607 views • 2 years ago"
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
