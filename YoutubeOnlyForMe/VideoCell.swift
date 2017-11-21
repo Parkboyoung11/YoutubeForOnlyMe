@@ -33,7 +33,7 @@ class VideoCell : BaseCell {
             setProfileImage()
         
             
-            if let channelName = video?.channel?.name , let numberOfViews = video?.numberOfViews {
+            if let channelName = video?.channel?.name , let numberOfViews = video?.number_of_views {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 
@@ -88,8 +88,6 @@ class VideoCell : BaseCell {
     let subtitleTextView : UITextView = {
         let textView = UITextView()
         textView.textColor = UIColor.lightGray
-//        textView.isEditable = false
-//        textView.text = "TaylorSwiftVEVO • 1,604,684,607 views • 2 years ago"
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
@@ -98,13 +96,13 @@ class VideoCell : BaseCell {
     var titleLabelHeightContraint : NSLayoutConstraint?
     
     func setupThumbnailImage() {
-        if let thumbnailImageURL = video?.thumbnailImageName {
+        if let thumbnailImageURL = video?.thumbnail_image_name {
             thumbnailImageView.loadImageFromURL(urlString: thumbnailImageURL)
         }
     }
     
     func setProfileImage() {
-        if let profileImageURL = video?.channel?.profileImageName {
+        if let profileImageURL = video?.channel?.profile_image_name {
             userProfileImageView.loadImageFromURL(urlString: profileImageURL)
         }
     }
@@ -128,7 +126,6 @@ class VideoCell : BaseCell {
         //right contraints
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: 0))
         //height contraints
-//        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         titleLabelHeightContraint = NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44)
         addConstraint(titleLabelHeightContraint!)
         
